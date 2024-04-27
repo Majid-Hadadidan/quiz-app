@@ -7,7 +7,6 @@ export default function Answers({
   onSelect,
 }) {
   const shuffleAnswers = useRef();
-
   //shuffle every  answers in question
   if (!shuffleAnswers.current) {
     shuffleAnswers.current = [...answers];
@@ -27,9 +26,15 @@ export default function Answers({
         ) {
           cssClass = answerState;
         }
+
+        console.log("answerState", answerState);
         return (
           <li key={answer} className="answer">
-            <button onClick={() => onSelect(answer)} className={cssClass}>
+            <button
+              onClick={() => onSelect(answer)}
+              className={cssClass}
+              disabled={answerState !== ""}
+            >
               {answer}
             </button>
           </li>

@@ -3,22 +3,22 @@ import { useState, useEffect } from "react";
 export default function QuestionTimer({ timeout, onTimeout }) {
   const [remainingTime, setRemainingTime] = useState(timeout);
   useEffect(() => {
-    console.log("Setting Timeout");
+    // console.log("Setting Timeout");
     const timer = setTimeout(onTimeout, timeout);
     return () => {
-        console.log('Clear Timeout')
+        // console.log('Clear Timeout')
       clearTimeout(timer);
     };
   }, [onTimeout, timeout]);
 
   useEffect(() => {
-    console.log("Setting Interval");
+    // console.log("Setting Interval");
     const interval = setInterval(
       () => setRemainingTime((prevRemainingTime) => prevRemainingTime - 100),
       100
     );
     return () => {
-      console.log("ClearInterval");
+      // console.log("ClearInterval");
       clearInterval(interval);
     };
   }, []);
